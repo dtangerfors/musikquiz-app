@@ -1,0 +1,91 @@
+{
+  "Main" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "uid"
+      }
+    },
+    "quiz_title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "Quiz Title"
+      }
+    },
+    "theme_color" : {
+      "type" : "Color",
+      "config" : {
+        "label" : "Theme Color"
+      }
+    },
+    "video_background" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "Video Background",
+        "select" : null
+      }
+    },
+    "cover_photo" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Cover Photo"
+      }
+    },
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : null,
+        "choices" : {
+          "question" : {
+            "type" : "Slice",
+            "fieldset" : "Question",
+            "description" : "Question",
+            "icon" : "music_note",
+            "display" : "list",
+            "non-repeat" : {
+              "question" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1",
+                  "label" : "Question"
+                }
+              },
+              "answer" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Answer"
+                }
+              },
+              "song" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Song"
+                }
+              },
+              "artist" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Artist"
+                }
+              },
+              "time_limit" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "Time Limit"
+                }
+              }
+            },
+            "repeat" : { }
+          }
+        }
+      }
+    }
+  }
+}
