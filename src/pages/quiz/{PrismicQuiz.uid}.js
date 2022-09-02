@@ -59,7 +59,7 @@ const SingleQuiz = ({ data }) => {
               {quiz.body.length} låtar • 1 fråga till varje låt
             </p>
           </header>
-          <div>
+          <div className="flex justify-center">
             <button
               type="button"
               onClick={() => setIsPlayed(!isPlayed)}
