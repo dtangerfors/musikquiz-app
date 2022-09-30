@@ -1,17 +1,47 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHotkeys } from "react-hotkeys-hook";
+import { navigate } from "gatsby";
 
-const Pagination = ({totalQuestions}) => {
+import PaginationItem from "./PaginationItem";
+
+const Pagination = ({ totalQuestions }) => {
+  const dispatch = useDispatch();
+  const questionIndex = useSelector((state) => state.index);
+  const questions = useSelector((state) => state.questions);
+  const finished = questions.length - 1 === questionIndex;
+
+  useHotkeys("right", () => {
+      if (!(questionIndex >= 4)) {
+        dispatch({
+          type: "INCREMENT",
+          currentIndex: questionIndex,
+        });
+      } else {
+        navigate('answers')
+      }
+    },
+    [questionIndex]
+  );
+
+  useHotkeys(
+    "left",
+    () => {
+      if (questionIndex >= 1) {
+        dispatch({
+        type: "DECREMENT",
+        currentIndex: questionIndex,
+      });
+      }
+    },
+    [questionIndex]
+  );
 
   return (
     <div className="flex">
       {totalQuestions.map((number, index) => {
         return (
-          <div className="flex-1 relative z-10 group">
-            <a className="w-10 h-10 mx-auto rounded-full bg-white grid place-items-center font-sans-condensed text-black text-lg leading-none border-2 border-black group-first:bg-[#b6e85f]">
-              {index +1}
-            </a>
-            <div className="absolute -z-10 w-full h-[2px] bg-black top-1/2 -translate-y-1/2 group-first:w-1/2 group-first:right-0 group-last:w-1/2 group-last:left-0"></div>
-          </div>
+          <PaginationItem key={`question-button-${index}`} index={index} />
         );
       })}
     </div>

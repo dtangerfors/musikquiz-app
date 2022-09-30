@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { graphql } from "gatsby";
-import { Layout } from "../../components/Layout";
+import { useDispatch } from 'react-redux';
+import { Layout } from "../../../components/Layout";
 
-import bgImage from "../../images/musikquiz-1-cover.webp";
-import Quiz from "../../components/Quiz";
+import bgImage from "../../../images/musikquiz-1-cover.webp";
+import Quiz from "../../../components/Quiz";
 
 export const query = graphql`
   query ($id: String) {
@@ -40,14 +41,22 @@ export const query = graphql`
 
 const SingleQuiz = ({ data }) => {
   const [isPlayed, setIsPlayed] = useState(false);
-
-  if (!data) return null;
   const quiz = data.prismicQuiz.data;
+
+  const dispatch = useDispatch();
+  const setQuestions = value => {
+    dispatch({
+      type: 'SET_QUESTIONS',
+      questions: value
+    })
+  }
+
+  setQuestions(quiz.body);
 
   return (
     <Layout>
       <main style={{ backgroundImage: `url(${bgImage})` }}>
-        <div className="flex flex-col min-h-screen justify-center max-w-screen-lg mx-auto">
+        <div className="flex flex-col min-h-screen justify-center max-w-screen-xl mx-auto">
           {isPlayed ? <Quiz questions={quiz.body} /> : <><header className="py-24 flex flex-wrap flex-col justify-center items-center">
             <h1
               className="block font-sans-condensed font-extrabold text-5xl mb-8"
