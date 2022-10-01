@@ -54,7 +54,7 @@ const AnswerPage = ({ data }) => {
   const setThemeColor = (value) => {
     dispatch({
       type: "SET_THEME_COLOR",
-      questions: value,
+      theme_color: value,
     });
   };
 

@@ -15,7 +15,7 @@ function Question() {
           {question.primary.question.text}
         </h1>
       </div>
-      <Counter seconds={question.primary.time_limit} question={questionIndex +1}/>
+      {/* <Counter seconds={question.primary.time_limit} question={questionIndex +1}/> */}
     </>
   );
 }

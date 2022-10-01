@@ -55,11 +55,19 @@ const SingleQuiz = ({ data }) => {
     })
   }
 
+  const setThemeColor = (value) => {
+    dispatch({
+      type: "SET_THEME_COLOR",
+      theme_color: value,
+    });
+  };
+
   setQuestions(quiz.body);
+  setThemeColor(quiz.theme_color);
 
   return (
     <Layout>
-      <main className="relative">
+      <main className="relative px-8">
         <div className="flex flex-col min-h-screen justify-center max-w-screen-xl mx-auto">
           {isPlayed ? <Quiz questions={quiz.body} /> : <><header className="py-24 flex flex-wrap flex-col justify-center items-center">
             <h1
