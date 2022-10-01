@@ -7,36 +7,40 @@ import bgImage from "../../../images/musikquiz-1-cover.webp";
 import Quiz from "../../../components/Quiz";
 
 export const query = graphql`
-  query ($id: String) {
-    prismicQuiz(id: { eq: $id }) {
-      data {
-        theme_color
-        body {
-          ... on PrismicQuizDataBodyQuestion {
-            id
-            primary {
-              answer {
-                text
-              }
-              artist {
-                text
-              }
-              question {
-                text
-              }
-              song {
-                text
-              }
-              time_limit
+query ($id: String) {
+  prismicQuiz(id: {eq: $id}) {
+    data {
+      theme_color
+      body {
+        ... on PrismicQuizDataBodyQuestion {
+          id
+          primary {
+            answer {
+              text
             }
+            artist {
+              text
+            }
+            question {
+              text
+            }
+            song {
+              text
+            }
+            time_limit
           }
         }
-        quiz_title {
-          text
-        }
+      }
+      quiz_title {
+        text
+      }
+      video_background {
+        id
+        url
       }
     }
   }
+}
 `;
 
 const SingleQuiz = ({ data }) => {
@@ -51,11 +55,19 @@ const SingleQuiz = ({ data }) => {
     })
   }
 
+  const setThemeColor = (value) => {
+    dispatch({
+      type: "SET_THEME_COLOR",
+      theme_color: value,
+    });
+  };
+
   setQuestions(quiz.body);
+  setThemeColor(quiz.theme_color);
 
   return (
     <Layout>
-      <main style={{ backgroundImage: `url(${bgImage})` }}>
+      <main className="relative px-8">
         <div className="flex flex-col min-h-screen justify-center max-w-screen-xl mx-auto">
           {isPlayed ? <Quiz questions={quiz.body} /> : <><header className="py-24 flex flex-wrap flex-col justify-center items-center">
             <h1
@@ -78,6 +90,15 @@ const SingleQuiz = ({ data }) => {
             </button>
           </div></>}
         </div>
+        <figure className="absolute -z-10 w-full h-full inset-0">
+          <video  autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover">
+            <source src={quiz.video_background.url}></source>
+          </video>
+        </figure>
       </main>
     </Layout>
   );

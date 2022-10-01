@@ -4,6 +4,7 @@ const initState = {
   index: 0,
   questions: [],
   theme_color: "#b6e85f",
+  quiz_component: "song",
 };
 
 const Reducer = (state = initState, action) => {
@@ -30,10 +31,15 @@ const Reducer = (state = initState, action) => {
         ...state,
         questions: action.questions,
       };
-      case "SET_THEME_COLOR":
+    case "SET_THEME_COLOR":
       return {
         ...state,
         theme_color: action.theme_color,
+      };
+    case "SET_QUIZ_COMPONTENT":
+      return {
+        ...state,
+        quiz_component: action.quiz_component,
       };
     default:
       return state;

@@ -11,14 +11,20 @@ const Pagination = ({ totalQuestions }) => {
   const questions = useSelector((state) => state.questions);
   const finished = questions.length - 1 === questionIndex;
 
-  useHotkeys("right", () => {
+  useHotkeys(
+    "right",
+    () => {
       if (!(questionIndex >= 4)) {
         dispatch({
           type: "INCREMENT",
           currentIndex: questionIndex,
         });
+        dispatch({
+          type: "SET_QUIZ_COMPONTENT",
+          quiz_component: "song",
+        });
       } else {
-        navigate('answers')
+        navigate("answers");
       }
     },
     [questionIndex]
@@ -29,10 +35,36 @@ const Pagination = ({ totalQuestions }) => {
     () => {
       if (questionIndex >= 1) {
         dispatch({
-        type: "DECREMENT",
-        currentIndex: questionIndex,
-      });
+          type: "DECREMENT",
+          currentIndex: questionIndex,
+        });
+        dispatch({
+          type: "SET_QUIZ_COMPONTENT",
+          quiz_component: "song",
+        });
       }
+    },
+    [questionIndex]
+  );
+
+  useHotkeys(
+    "down",
+    () => {
+      dispatch({
+        type: "SET_QUIZ_COMPONTENT",
+        quiz_component: "question",
+      });
+    },
+    [questionIndex]
+  );
+
+  useHotkeys(
+    "up",
+    () => {
+      dispatch({
+        type: "SET_QUIZ_COMPONTENT",
+        quiz_component: "song",
+      });
     },
     [questionIndex]
   );

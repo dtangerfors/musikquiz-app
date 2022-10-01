@@ -1,17 +1,31 @@
 import React from "react";
-import NavButton from "./NavButton";
+import { useSelector } from "react-redux";
 import Pagination from "./Pagination";
 import Question from "./Question";
+import SongPlaying from "./SongPlaying";
+import Logo from "./Logo";
 
 const Quiz = ({questions}) => {
+   const quiz_component = useSelector((state) => state.quiz_component);
+   const theme_color = useSelector((state) => state.theme_color);
    if (!questions) return null;
+
+   let component;
+
+   if (quiz_component === "song") component = <SongPlaying />;
+   if (quiz_component === "question") component = <Question />;
 
    return (
       <div className="flex flex-col min-h-screen justify-between">
+         <header className="w-32 mt-12">
+            <Logo fillColor={theme_color} />
+          </header>
+         
+         {component}
 
-         <div className="mt-12"><Pagination totalQuestions={questions} /></div>
-         <Question />
-         {/* <NavButton /> */}
+         <div className="mb-12">
+            <Pagination totalQuestions={questions} />
+         </div>
 
       </div>
    )
