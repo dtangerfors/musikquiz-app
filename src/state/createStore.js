@@ -8,7 +8,6 @@ const initState = {
 };
 
 const Reducer = (state = initState, action) => {
-  console.log(state, action);
 
   switch (action.type) {
     case "SET_INDEX":
