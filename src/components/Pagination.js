@@ -14,7 +14,7 @@ const Pagination = ({ totalQuestions }) => {
   useHotkeys(
     "right",
     () => {
-      if (!(questionIndex >= 4)) {
+      if (!(questionIndex >= questions.length - 1)) {
         dispatch({
           type: "INCREMENT",
           currentIndex: questionIndex,
@@ -25,6 +25,10 @@ const Pagination = ({ totalQuestions }) => {
         });
       } else {
         navigate("answers");
+        dispatch({
+          type: "SET_INDEX",
+          index: 0,
+        });
       }
     },
     [questionIndex]

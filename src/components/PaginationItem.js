@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 const PaginationItem = ({index}) => {
    const dispatch = useDispatch();
    const questionIndex = useSelector((state) => state.index);
-   const themeColor = '#b6e85f';
+   const themeColor = useSelector((state) => state.theme_color);
    let activeButtonBg = questionIndex === index ? themeColor: null;
  
    const setIndex = index => {
@@ -12,6 +12,10 @@ const PaginationItem = ({index}) => {
        type: "SET_INDEX",
        index: index
      })
+     dispatch({
+      type: "SET_QUIZ_COMPONTENT",
+      quiz_component: "song",
+    });
    };
  
    return (
