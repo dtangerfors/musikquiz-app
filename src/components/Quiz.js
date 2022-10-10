@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { motion, AnimatePresence } from "framer-motion"
 import Pagination from "./Pagination";
 import Question from "./Question";
 import SongPlaying from "./SongPlaying";
@@ -16,14 +17,14 @@ const Quiz = ({questions}) => {
    if (quiz_component === "question") component = <Question />;
 
    return (
-      <div className="flex flex-col min-h-screen justify-between">
+      <div className="flex flex-col min-h-screen">
          <header className="w-32 mt-12">
             <Logo fillColor={theme_color} />
           </header>
          
          {component}
 
-         <div className="mb-12">
+         <div className="mb-12 my-auto">
             <Pagination totalQuestions={questions} />
          </div>
 
