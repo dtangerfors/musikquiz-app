@@ -24,7 +24,7 @@ const Pagination = ({ totalQuestions }) => {
           quiz_component: "song",
         });
       } else {
-        navigate("answers");
+        navigate("finished");
         dispatch({
           type: "SET_INDEX",
           index: 0,
