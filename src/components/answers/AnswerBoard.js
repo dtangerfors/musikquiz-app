@@ -15,10 +15,10 @@ const AnswerBoard = ({quiz}) => {
             <div className="flex border-b-2 border-black">
               <div className="px-10 py-6 border-r-2 border-black flex-1">
                 <p>
-                  <span className="font-sans text-gray-500 uppercase text-sm">
+                  <span className="font-sans text-gray-500 uppercase text-lg">
                     Artist
                   </span>
-                  <motion.span className="block font-sans-condensed font-extrabold text-2xl"
+                  <motion.span className="block font-sans-condensed font-extrabold text-4xl"
                   key={`artist-${questionIndex}`}
                   variants={fadeUp}
                   initial="hidden"
@@ -31,10 +31,10 @@ const AnswerBoard = ({quiz}) => {
               </div>
               <div className="px-10 py-6 flex-1">
                 <p>
-                  <span className="font-sans text-gray-500 uppercase text-sm">
+                  <span className="font-sans text-gray-500 uppercase text-lg">
                     Låt
                   </span>
-                  <motion.span className="block font-sans-condensed font-extrabold text-2xl"
+                  <motion.span className="block font-sans-condensed font-extrabold text-4xl"
                   key={`song-${questionIndex}`}
                   variants={fadeUp}
                   initial="hidden"
@@ -48,15 +48,15 @@ const AnswerBoard = ({quiz}) => {
             </div>
             <div>
               <div className="p-10 pb-6 pl-0 ml-10 border-b-2 border-gray-300">
-                <span className="font-sans text-gray-500 uppercase text-sm">
+                <span className="font-sans text-gray-500 uppercase text-lg">
                   Fråga
                 </span>
-                <p className="font-sans text-gray-700 text-sm max-w-prose">
+                <p className="font-sans text-gray-700 text-lg max-w-prose">
                   {quiz.body[questionIndex].primary.question.text}
                 </p>
               </div>
               <div className="p-10">
-                <motion.p className="block font-sans-condensed font-extrabold text-5xl  max-w-[35ch]"
+                <motion.p className="block font-sans-condensed font-extrabold text-8xl  max-w-[35ch]"
                 key={`question-answer-${questionIndex}`}
                 variants={fadeUp}
                 initial="hidden"

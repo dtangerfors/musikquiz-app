@@ -23,7 +23,7 @@ const Question = ({ isVisible }) => {
         transition={{ delay: 0.3, ...transition }}
       >
         <h1
-          className="font-sans-condensed font-extrabold text-5xl leading-tight text-white"
+          className="font-sans-condensed font-extrabold text-6xl leading-tight text-white"
           
         >
           {question.primary.question.text}

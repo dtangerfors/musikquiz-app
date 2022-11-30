@@ -120,7 +120,7 @@ const AnswerPage = ({ data }) => {
   return (
     <Layout>
       <main>
-        <div className="flex flex-col min-h-screen justify-between max-w-screen-lg mx-auto">
+        <div className="flex flex-col min-h-screen justify-between max-w-screen-2xl mx-auto">
           <header className="w-32 mt-12">
             <Logo fillColor={quiz.theme_color} />
           </header>

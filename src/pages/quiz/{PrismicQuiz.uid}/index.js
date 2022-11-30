@@ -69,19 +69,19 @@ const SingleQuiz = ({ data }) => {
   return (
     <Layout>
       <main className="relative px-8">
-        <div className="flex flex-col min-h-screen justify-center max-w-screen-xl mx-auto">
+        <div className="flex flex-col min-h-screen justify-center max-w-screen-2xl mx-auto">
           {isPlayed ? (
             <Quiz questions={quiz.body} />
           ) : (
             <>
               <header className="py-24 flex flex-wrap flex-col justify-center items-center">
                 <h1
-                  className="block font-sans-condensed font-extrabold text-5xl mb-8"
+                  className="block font-sans-condensed font-extrabold text-8xl mb-8"
                   style={{ color: quiz.theme_color }}
                 >
                   {quiz.quiz_title.text}
                 </h1>
-                <p className="font-sans text-white text-xl">
+                <p className="font-sans text-white text-3xl">
                   {quiz.body.length} låtar • 1 fråga till varje låt
                 </p>
               </header>
